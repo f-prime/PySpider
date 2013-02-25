@@ -49,8 +49,6 @@ def spider(url):
                     if link in prev:
                         continue
                     else:
-                        if len(prev) >= 10000:
-                            prev = prev[len(prev)-5:]
                         prev.append(link)
                     try:
                         urllib.urlopen(link)
