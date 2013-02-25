@@ -57,4 +57,8 @@ def spider(url):
                     continue
 
 if __name__ == "__main__":
-    spider(sys.argv[1])
+    try:
+        url = sys.argv[1]
+    except IndexError:
+        print "Usage: python spider.py <url>"
+    spider(url)
