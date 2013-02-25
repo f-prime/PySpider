@@ -14,8 +14,18 @@ def spider(url):
                     url = prev[prev_num]
                 except IndexError:
                     print "Can't crawl", url, "trying next in list if exists..."
-                prev_num -= 1
-                continue
+                if prev_num == 0:
+                    if prev[prev_num] in blacklist:
+                        prev_num += 1
+                    else:
+                        prev_num += 1
+                    continue
+                else:
+                    if prev[prev_num] in blacklist:
+                        prev_num += 1
+                    else:
+                        prev_num -= 1
+                    continue
             try:
                 source = urllib.urlopen(url).read()
             except:
