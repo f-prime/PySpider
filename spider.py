@@ -21,7 +21,7 @@ def spider(url):
             except:
                 blacklist.append(url)
                 url = prev[len(prev)-1]
-                print url, str(blacklist)
+                print "Blacklisted", url
                 continue
             current = url
             links = re.findall("<a href.*</a>", source)
@@ -58,7 +58,6 @@ def spider(url):
 
 if __name__ == "__main__":
     try:
-        url = sys.argv[1]
+        spider(sys.argv[1])
     except IndexError:
         print "Usage: python spider.py <url>"
-    spider(url)
